@@ -13,6 +13,7 @@ This section should list any major frameworks that you built your project using.
 * [Room](https://developer.android.com/topic/libraries/architecture/room)
 * [Retrofit](https://square.github.io/retrofit/)
 * [Coroutines](https://kotlinlang.org/docs/reference/coroutines/coroutines-guide.html)
+* [LiveData](https://developer.android.com/topic/libraries/architecture/livedata)
 
 
 
