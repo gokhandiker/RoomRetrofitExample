@@ -1,6 +1,7 @@
 package com.mvvm.coroutineexample.util
 
 import com.mvvm.coroutineexample.data.entities.CharacterEntity
+import com.mvvm.coroutineexample.data.model.CharacterApi
 import com.mvvm.coroutineexample.data.model.Characters
 import com.mvvm.coroutineexample.ui.CharacterModel
 
@@ -15,7 +16,8 @@ fun CharacterEntity.asDomainModel() = CharacterModel(
 fun Characters.asEntitiy(): List<CharacterEntity> {
     return results.map {
         CharacterEntity(
-            name = it.name
+            name = it.name,
+            status = it.status
         )
     }
 }
@@ -34,6 +36,15 @@ fun List<CharacterEntity>.asViewModel(): List<CharacterModel> {
         CharacterModel(
             id = it.characterId,
             name = it.name
+        )
+    }
+}
+
+fun List<CharacterApi>.asEntitiy() : List<CharacterEntity>{
+    return map {
+        CharacterEntity(
+            name = it.name,
+            status = it.status
         )
     }
 }

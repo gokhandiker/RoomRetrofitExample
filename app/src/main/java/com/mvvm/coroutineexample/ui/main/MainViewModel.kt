@@ -2,6 +2,7 @@ package com.mvvm.coroutineexample.ui.main
 
 import androidx.lifecycle.ViewModel
 import com.mvvm.coroutineexample.data.repository.MainRepository
+import com.mvvm.coroutineexample.ui.CharacterModel
 
 
 class MainViewModel(
@@ -9,7 +10,7 @@ class MainViewModel(
 ) : ViewModel() {
 
 
-    val characters = mainRepository.getAllCharacters()
+    val characters = mainRepository.getCharacters()
 
 
 

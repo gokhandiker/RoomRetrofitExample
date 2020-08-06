@@ -17,5 +17,5 @@ interface CharacterDao {
     fun insertAll(videos : List<CharacterEntity>)
 
     @Query("select * from characters")
-    fun getAllCharacters() : List<CharacterEntity>
+    fun getAllCharacters() : LiveData<List<CharacterEntity>>
 }
