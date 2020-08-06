@@ -1,6 +1,6 @@
 package com.mvvm.coroutineexample.data.model
 
-data class Character(
+data class CharacterApi(
     val id: Int,
     val name: String
 )

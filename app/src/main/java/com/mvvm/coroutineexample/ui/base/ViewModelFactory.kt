@@ -10,12 +10,12 @@ import java.lang.IllegalArgumentException
 
 class ViewModelFactory(
     private val apiHelper: ApiHelper,
-    private val characterDao: CharacterDao?
+    private val characterDao: CharacterDao
 ) : ViewModelProvider.Factory {
     override fun <T : ViewModel?> create(modelClass: Class<T>): T {
 
         if (modelClass.isAssignableFrom(MainViewModel::class.java)) {
-            return MainViewModel(MainRepository(apiHelper),characterDao) as T
+            return MainViewModel(MainRepository(apiHelper,characterDao)) as T
         }
         throw  IllegalArgumentException("Unknown class name")
     }

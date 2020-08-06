@@ -1,16 +1,13 @@
 package com.mvvm.coroutineexample.ui.main
 
-import android.database.Observable
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelProviders
 import com.mvvm.coroutineexample.R
 import com.mvvm.coroutineexample.data.api.ApiHelper
 import com.mvvm.coroutineexample.data.api.RetrofitBuilder
-import com.mvvm.coroutineexample.data.entities.Character
 import com.mvvm.coroutineexample.data.local.AppDatabase
 import com.mvvm.coroutineexample.data.local.CharacterDao
 import com.mvvm.coroutineexample.ui.base.ViewModelFactory
@@ -21,8 +18,8 @@ import kotlinx.coroutines.launch
 class MainActivity : AppCompatActivity() {
 
     lateinit var mainViewModel: MainViewModel
-    private var appDatabase : AppDatabase? = null
-    private var characterDao : CharacterDao? = null
+    lateinit var appDatabase : AppDatabase
+    lateinit var characterDao : CharacterDao
 
 
 
@@ -31,7 +28,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         appDatabase = AppDatabase.getDatabase(this)
-        characterDao = appDatabase?.characterDao()
+        characterDao = appDatabase.characterDao()
 
 
         mainViewModel = ViewModelProviders.of(
@@ -51,7 +48,7 @@ class MainActivity : AppCompatActivity() {
         mainViewModel.getCharacters().observe(this, Observer {
             it?.let { resource ->
                 when (resource.status) {
-                    Status.SUCCESS -> { resource.data?.let {Log.e("observe",it.results.toString()) }}
+                    Status.SUCCESS -> { resource.data?.let {Log.e("observe",it.toString()) }}
                     Status.ERROR -> { Log.e("observe","Error: ${it.message}")}
                     Status.LOADING -> { Log.e("observe","Loading...")}
                 }

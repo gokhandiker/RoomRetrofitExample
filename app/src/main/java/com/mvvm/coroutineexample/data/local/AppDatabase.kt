@@ -4,9 +4,9 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
-import com.mvvm.coroutineexample.data.entities.Character
+import com.mvvm.coroutineexample.data.entities.CharacterEntity
 
-@Database(entities = [Character::class], exportSchema = false, version = 1)
+@Database(entities = [CharacterEntity::class], exportSchema = false, version = 1)
 abstract class AppDatabase() : RoomDatabase() {
     abstract fun characterDao(): CharacterDao
 
