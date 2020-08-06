@@ -11,10 +11,13 @@ class MainViewModel(
     private val mainRepository: MainRepository
 ) : ViewModel() {
 
+    val _characterList =mainRepository.characters
+
     fun getCharacters() = liveData(Dispatchers.IO) {
+        mainRepository.refreshCharacters()
         emit(Resource.loading(null))
         try {
-            emit(Resource.success(data = mainRepository.getCharacters()))
+            emit(Resource.success(data = _characterList))
         } catch (exception: Exception) {
             emit(Resource.error(data = null, message = exception.message ?: "Error Occurred!"))
         }
