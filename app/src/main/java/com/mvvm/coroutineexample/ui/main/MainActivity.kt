@@ -36,13 +36,9 @@ class MainActivity : AppCompatActivity() {
             ViewModelFactory(ApiHelper(RetrofitBuilder.apiService),characterDao)
         ).get(MainViewModel::class.java)
 
-        GlobalScope.launch {
-            var list = characterDao.getAllCharacters()
-        }
 
 
-
-        mainViewModel.getCharacters().observe(this, Observer {
+        mainViewModel.characters.observe(this, Observer { it ->
             it?.let { resource ->
                 when (resource.status) {
                     Status.SUCCESS -> { resource.data?.let {Log.e("observe",it.toString()) }}
