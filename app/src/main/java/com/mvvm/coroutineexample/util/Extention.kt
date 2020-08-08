@@ -17,7 +17,15 @@ fun Characters.asEntitiy(): List<CharacterEntity> {
     return results.map {
         CharacterEntity(
             name = it.name,
-            status = it.status
+            status = it.status,
+            created = it.created,
+            gender = it.gender,
+            location = it.location,
+            c_image = it.image,
+            origin = it.origin,
+            species = it.species,
+            type = it.type,
+            url = it.url
         )
     }
 }
@@ -44,7 +52,15 @@ fun List<CharacterApi>.asEntitiy() : List<CharacterEntity>{
     return map {
         CharacterEntity(
             name = it.name,
-            status = it.status
+            status = it.status,
+            created = it.created,
+            gender = it.gender,
+            location = it.location,
+            c_image = it.image,
+            origin = it.origin,
+            species = it.species,
+            type = it.type,
+            url = it.url
         )
     }
 }

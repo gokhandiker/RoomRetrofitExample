@@ -1,15 +1,30 @@
 package com.mvvm.coroutineexample.data.entities
 
 import androidx.room.ColumnInfo
+import androidx.room.Embedded
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 
 @Entity(tableName = "characters")
 data class CharacterEntity(
-    val name : String,
-    val status : String
+    var name : String,
+    var status : String,
+    var species : String,
+    var type : String,
+    var gender : String,
+    @Embedded
+    var origin: Origin,
+    @Embedded
+    var location: Location,
+    var url : String,
+    var created : String,
+    @ColumnInfo(name = "character_image")
+    var c_image : String
+
 ){
     @PrimaryKey(autoGenerate = true)
     @ColumnInfo(name = "id")
     var characterId: Int = 0
+
+
 }

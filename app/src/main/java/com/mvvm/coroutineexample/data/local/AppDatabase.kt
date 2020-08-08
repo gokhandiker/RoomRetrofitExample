@@ -8,7 +8,7 @@ import androidx.room.migration.Migration
 import androidx.sqlite.db.SupportSQLiteDatabase
 import com.mvvm.coroutineexample.data.entities.CharacterEntity
 
-@Database(entities = [CharacterEntity::class], exportSchema = false, version = 2)
+@Database(entities = [CharacterEntity::class], exportSchema = false, version = 1)
 abstract class AppDatabase() : RoomDatabase() {
     abstract fun characterDao(): CharacterDao
 
@@ -32,7 +32,7 @@ abstract class AppDatabase() : RoomDatabase() {
 
         private fun buildDatabase(appContext: Context) =
             Room.databaseBuilder(appContext.applicationContext, AppDatabase::class.java, "ricky")
-                .addMigrations(AppDatabase.MIGRATION_1_2)
+
                 .build()
     }
 

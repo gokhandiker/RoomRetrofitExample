@@ -16,6 +16,5 @@ class MainRepository(
         databaseQuery = { characterDao.getAllCharacters() },
         networkCall = { apiHelper.getCharacters() },
         saveCallResult = { characterDao.insertAll(it.results.asEntitiy()) }
-
     )
 }
