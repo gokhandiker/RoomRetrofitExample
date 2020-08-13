@@ -10,7 +10,7 @@ This project is for practicing about caching mechanisim with mvvm and architectu
 * [Retrofit](https://square.github.io/retrofit/)
 * [Coroutines](https://kotlinlang.org/docs/reference/coroutines/coroutines-guide.html)
 * [LiveData](https://developer.android.com/topic/libraries/architecture/livedata)
-* [Paging](https://developer.android.com/topic/libraries/architecture/paging) Adding ...
+* [Paging](https://developer.android.com/topic/libraries/architecture/paging) working on it now ...
 * Hilt (Next Step)
 * DataBinding (Next Step)
 
