@@ -13,7 +13,7 @@ This project is for practicing about caching mechanisim with mvvm and architectu
 * [Paging](https://developer.android.com/topic/libraries/architecture/paging) working on it now ...
 * Hilt (Next Step)
 * DataBinding (Next Step)
-
+* Navigation Components
 
 
 ## License
