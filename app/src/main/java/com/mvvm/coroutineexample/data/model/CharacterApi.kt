@@ -4,7 +4,7 @@ import com.mvvm.coroutineexample.data.entities.Location
 import com.mvvm.coroutineexample.data.entities.Origin
 
 data class CharacterApi(
-    val id: Int,
+    val id: Long,
     val name: String,
     val status: String,
     val species: String,

@@ -6,6 +6,7 @@ import android.util.Log
 import android.view.View
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
+import androidx.paging.ExperimentalPagingApi
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.mvvm.coroutineexample.R
 import com.mvvm.coroutineexample.data.api.ApiHelper
@@ -18,13 +19,14 @@ import com.mvvm.coroutineexample.util.asViewModel
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
-
+@ExperimentalPagingApi
 class MainActivity : AppCompatActivity(), CharactersAdapter.CharacterItemListener {
 
     lateinit var mainViewModel: MainViewModel
     lateinit var appDatabase : AppDatabase
     lateinit var characterDao : CharacterDao
     lateinit var adapter: CharactersAdapter
+
 
 
 
@@ -44,7 +46,7 @@ class MainActivity : AppCompatActivity(), CharactersAdapter.CharacterItemListene
 
         mainViewModel = ViewModelProviders.of(
             this,
-            ViewModelFactory(ApiHelper(RetrofitBuilder.apiService),characterDao)
+            ViewModelFactory(ApiHelper(RetrofitBuilder.apiService),appDatabase)
         ).get(MainViewModel::class.java)
 
 
@@ -67,7 +69,7 @@ class MainActivity : AppCompatActivity(), CharactersAdapter.CharacterItemListene
 
     }
 
-    override fun onClickedCharacter(characterId: Int) {
+    override fun onClickedCharacter(characterId: Long) {
         Log.e("onClickedCharacter: ",""+characterId)
     }
 }

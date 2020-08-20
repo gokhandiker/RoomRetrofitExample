@@ -7,19 +7,27 @@ import androidx.room.RoomDatabase
 import androidx.room.migration.Migration
 import androidx.sqlite.db.SupportSQLiteDatabase
 import com.mvvm.coroutineexample.data.entities.CharacterEntity
+import com.mvvm.coroutineexample.data.entities.RemoteKeysEntity
 
-@Database(entities = [CharacterEntity::class], exportSchema = false, version = 1)
-abstract class AppDatabase() : RoomDatabase() {
+@Database(
+    entities = [CharacterEntity::class, RemoteKeysEntity::class],
+    exportSchema = false,
+    version = 1
+)
+abstract class AppDatabase : RoomDatabase() {
     abstract fun characterDao(): CharacterDao
+    abstract fun remoteKeyDao(): RemoteKeysDao
 
     companion object {
         @Volatile
         private var instance: AppDatabase? = null
+
         // Migration from 1 to 2, Room 2.1.0
         val MIGRATION_1_2 = object : Migration(1, 2) {
             override fun migrate(database: SupportSQLiteDatabase) {
                 database.execSQL(
-                    "ALTER TABLE characters ADD COLUMN status TEXT NOT NULL DEFAULT ''")
+                    "ALTER TABLE characters ADD COLUMN status TEXT NOT NULL DEFAULT ''"
+                )
             }
         }
 
