@@ -1,4 +1,4 @@
-package com.mvvm.coroutineexample.ui.main
+package com.mvvm.coroutineexample.ui.standartlist
 
 import android.view.LayoutInflater
 import android.view.View

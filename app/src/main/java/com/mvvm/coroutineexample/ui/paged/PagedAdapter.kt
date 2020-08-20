@@ -8,7 +8,6 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.mvvm.coroutineexample.R
 import com.mvvm.coroutineexample.ui.CharacterModel
-import com.mvvm.coroutineexample.ui.main.CharacterViewHolder
 import kotlinx.android.synthetic.main.character_card_item.view.*
 
 class PagedAdapter : PagingDataAdapter<CharacterModel, PagedViewHolder>(UIMODEL_COMPARATOR) {

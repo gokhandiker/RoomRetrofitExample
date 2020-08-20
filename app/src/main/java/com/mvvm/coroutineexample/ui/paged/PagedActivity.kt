@@ -12,8 +12,7 @@ import com.mvvm.coroutineexample.data.api.ApiHelper
 import com.mvvm.coroutineexample.data.api.RetrofitBuilder
 import com.mvvm.coroutineexample.data.local.AppDatabase
 import com.mvvm.coroutineexample.ui.base.ViewModelFactory
-import com.mvvm.coroutineexample.ui.main.CharactersAdapter
-import kotlinx.android.synthetic.main.activity_main.*
+import com.mvvm.coroutineexample.ui.standartlist.CharactersAdapter
 import kotlinx.android.synthetic.main.activity_paged.*
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch

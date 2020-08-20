@@ -1,11 +1,9 @@
-package com.mvvm.coroutineexample.ui.main
+package com.mvvm.coroutineexample.ui.standartlist
 
 import androidx.lifecycle.ViewModel
 import com.mvvm.coroutineexample.data.repository.MainRepository
-import com.mvvm.coroutineexample.ui.CharacterModel
 
-
-class MainViewModel(
+class StandartViewModel(
     private val mainRepository: MainRepository
 ) : ViewModel() {
 
