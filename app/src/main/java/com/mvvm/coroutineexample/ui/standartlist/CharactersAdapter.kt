@@ -1,4 +1,4 @@
-package com.mvvm.coroutineexample.ui.main
+package com.mvvm.coroutineexample.ui.standartlist
 
 import android.view.LayoutInflater
 import android.view.View
@@ -12,7 +12,7 @@ class CharactersAdapter(private val listener: CharacterItemListener) :
     RecyclerView.Adapter<CharacterViewHolder>() {
 
     interface CharacterItemListener {
-        fun onClickedCharacter(characterId: Int)
+        fun onClickedCharacter(characterId: Long)
     }
 
     private val items = ArrayList<CharacterModel>()

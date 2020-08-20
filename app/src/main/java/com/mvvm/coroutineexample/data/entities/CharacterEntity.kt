@@ -4,9 +4,11 @@ import androidx.room.ColumnInfo
 import androidx.room.Embedded
 import androidx.room.Entity
 import androidx.room.PrimaryKey
+import com.google.gson.annotations.SerializedName
 
 @Entity(tableName = "characters")
 data class CharacterEntity(
+    val id: Long,
     var name : String,
     var status : String,
     var species : String,
@@ -23,7 +25,7 @@ data class CharacterEntity(
 
 ){
     @PrimaryKey(autoGenerate = true)
-    @ColumnInfo(name = "id")
+    @ColumnInfo(name = "cid")
     var characterId: Int = 0
 
 
