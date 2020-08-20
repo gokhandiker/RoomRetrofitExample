@@ -14,6 +14,7 @@ This project is for practicing about caching mechanisim with mvvm and architectu
 * Hilt (Next Step)
 * DataBinding (Next Step)
 * Navigation Components
+* Motion Layout
 * Dark Mode
 
 
