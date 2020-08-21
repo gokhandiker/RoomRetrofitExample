@@ -8,6 +8,7 @@ import androidx.room.withTransaction
 import com.mvvm.coroutineexample.data.entities.CharacterEntity
 import com.mvvm.coroutineexample.data.entities.RemoteKeysEntity
 import com.mvvm.coroutineexample.data.local.AppDatabase
+import com.mvvm.coroutineexample.util.Status
 import com.mvvm.coroutineexample.util.asEntitiy
 import retrofit2.HttpException
 import java.io.IOException
@@ -59,25 +60,32 @@ class MortyRemoteMediator(
 
         try {
             val apiResponse = api.getCharactersPaged(page)
-            val resultResponse =apiResponse.data
-            val characters = resultResponse!!.results
-            val endOfPaginationReached = characters.isEmpty()
+            var endOfPaginationReached = true
 
-            database.withTransaction {
-                if (loadType == LoadType.REFRESH) {
-                    database.characterDao().clearAll()
-                    database.remoteKeyDao().clearRemoteKeys()
+            if (apiResponse.status.equals(Status.SUCCESS)) {
+                val resultResponse =apiResponse.data
+                val characters = resultResponse!!.results
+                 endOfPaginationReached = characters.isEmpty()
+
+                database.withTransaction {
+                    if (loadType == LoadType.REFRESH) {
+                        database.characterDao().clearAll()
+                        database.remoteKeyDao().clearRemoteKeys()
+                    }
+
+                    val prevKey = if (page == GITHUB_STARTING_PAGE_INDEX) null else page - 1
+                    val nextKey = if (endOfPaginationReached) null else page + 1
+
+                    val keys = characters.map {
+                        RemoteKeysEntity(repoId = it.id.toLong(), prevKey = prevKey, nextKey = nextKey)
+                    }
+                    database.remoteKeyDao().insertAll(keys)
+                    database.characterDao().insertAll(characters.asEntitiy())
                 }
-
-                val prevKey = if (page == GITHUB_STARTING_PAGE_INDEX) null else page - 1
-                val nextKey = if (endOfPaginationReached) null else page + 1
-
-                val keys = characters.map {
-                    RemoteKeysEntity(repoId = it.id.toLong(), prevKey = prevKey, nextKey = nextKey)
-                }
-                database.remoteKeyDao().insertAll(keys)
-                database.characterDao().insertAll(characters.asEntitiy())
             }
+
+
+
 
             return MediatorResult.Success(endOfPaginationReached = endOfPaginationReached)
         } catch (exception: IOException) {
