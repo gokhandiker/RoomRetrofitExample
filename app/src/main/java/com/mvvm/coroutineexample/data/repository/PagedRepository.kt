@@ -22,7 +22,7 @@ class PagedRepository(
         val pagingSourceFactory = { database.characterDao().getAllCharactersPaged() }
 
         return Pager(
-            config = PagingConfig(pageSize = NETWORK_PAGE_SIZE, enablePlaceholders = false),
+            config = PagingConfig(pageSize = NETWORK_PAGE_SIZE, enablePlaceholders = true),
             remoteMediator = MortyRemoteMediator(
                 database, api
             ),
@@ -31,7 +31,7 @@ class PagedRepository(
     }
 
     companion object {
-        private const val NETWORK_PAGE_SIZE = 20
+        private const val NETWORK_PAGE_SIZE = 30
     }
 
 }

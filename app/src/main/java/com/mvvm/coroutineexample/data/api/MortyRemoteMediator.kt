@@ -57,7 +57,6 @@ class MortyRemoteMediator(
 
         }
 
-
         try {
             val apiResponse = api.getCharactersPaged(page)
             var endOfPaginationReached = true
@@ -79,14 +78,11 @@ class MortyRemoteMediator(
                     val keys = characters.map {
                         RemoteKeysEntity(repoId = it.id.toLong(), prevKey = prevKey, nextKey = nextKey)
                     }
+
                     database.remoteKeyDao().insertAll(keys)
                     database.characterDao().insertAll(characters.asEntitiy())
                 }
             }
-
-
-
-
             return MediatorResult.Success(endOfPaginationReached = endOfPaginationReached)
         } catch (exception: IOException) {
             return MediatorResult.Error(exception)

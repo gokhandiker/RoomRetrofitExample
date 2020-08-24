@@ -7,7 +7,11 @@ import com.mvvm.coroutineexample.ui.CharacterModel
 
 fun CharacterEntity.asDomainModel() = CharacterModel(
     id = id,
-    name = name
+    name = name,
+    gender = gender,
+    imageUri = c_image,
+    species = species,
+    status = status
 )
 
 /**
@@ -35,7 +39,11 @@ fun Characters.asViewModel(): List<CharacterModel> {
     return results.map {
         CharacterModel(
             id = it.id,
-            name = it.name
+            name = it.name,
+            gender = it.gender,
+            imageUri = it.image,
+            species = it.species,
+            status = it.status
         )
     }
 }
@@ -44,7 +52,11 @@ fun List<CharacterEntity>.asViewModel(): List<CharacterModel> {
     return map {
         CharacterModel(
             id = it.id,
-            name = it.name
+            name = it.name,
+            gender = it.gender,
+            imageUri = it.c_image,
+            species = it.species,
+            status = it.status
         )
     }
 }
