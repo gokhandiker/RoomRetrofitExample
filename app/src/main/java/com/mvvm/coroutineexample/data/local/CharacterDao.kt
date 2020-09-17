@@ -18,12 +18,12 @@ interface CharacterDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insertAll(videos : List<CharacterEntity>)
 
-    @Query("select * from characters")
+    @Query("SELECT * FROM characters")
     fun getAllCharacters() : LiveData<List<CharacterEntity>>
 
-    @Query("select * from characters")
+    @Query("SELECT * FROM characters")
     fun getAllCharactersPaged(): PagingSource<Int, CharacterEntity>
 
-    @Query("delete from characters")
+    @Query("DELETE FROM characters")
     fun clearAll()
 }

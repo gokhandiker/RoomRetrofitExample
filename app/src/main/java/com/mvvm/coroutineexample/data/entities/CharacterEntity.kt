@@ -8,7 +8,7 @@ import com.google.gson.annotations.SerializedName
 
 @Entity(tableName = "characters")
 data class CharacterEntity(
-    val id: Long,
+    val ch_id: Long,
     var name : String,
     var status : String,
     var species : String,

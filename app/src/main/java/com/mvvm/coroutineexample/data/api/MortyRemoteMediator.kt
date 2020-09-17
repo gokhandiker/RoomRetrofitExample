@@ -99,7 +99,7 @@ class MortyRemoteMediator(
         // The paging library is trying to load data after the anchor position
         // Get the item closest to the anchor position
         return state.anchorPosition?.let { position ->
-            state.closestItemToPosition(position)?.id?.let { repoId ->
+            state.closestItemToPosition(position)?.ch_id?.let { repoId ->
                 database.remoteKeyDao().remoteKeysRepoId(repoId)
             }
         }
@@ -111,7 +111,7 @@ class MortyRemoteMediator(
         return state.pages.firstOrNull { it.data.isNotEmpty() }?.data?.firstOrNull()
             ?.let { repo ->
                 // Get the remote keys of the first items retrieved
-                database.remoteKeyDao().remoteKeysRepoId(repo.id)
+                database.remoteKeyDao().remoteKeysRepoId(repo.ch_id)
             }
     }
 
@@ -121,7 +121,7 @@ class MortyRemoteMediator(
         return state.pages.lastOrNull() { it.data.isNotEmpty() }?.data?.lastOrNull()
             ?.let { repo ->
                 // Get the remote keys of the last item retrieved
-                database.remoteKeyDao().remoteKeysRepoId(repo.id)
+                database.remoteKeyDao().remoteKeysRepoId(repo.ch_id)
             }
     }
 

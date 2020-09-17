@@ -6,7 +6,7 @@ import com.mvvm.coroutineexample.data.model.Characters
 import com.mvvm.coroutineexample.ui.CharacterModel
 
 fun CharacterEntity.asDomainModel() = CharacterModel(
-    id = id,
+    id = ch_id,
     name = name,
     gender = gender,
     imageUri = c_image,
@@ -20,7 +20,7 @@ fun CharacterEntity.asDomainModel() = CharacterModel(
 fun Characters.asEntitiy(): List<CharacterEntity> {
     return results.map {
         CharacterEntity(
-            id = it.id,
+            ch_id = it.id,
             name = it.name,
             status = it.status,
             created = it.created,
@@ -51,7 +51,7 @@ fun Characters.asViewModel(): List<CharacterModel> {
 fun List<CharacterEntity>.asViewModel(): List<CharacterModel> {
     return map {
         CharacterModel(
-            id = it.id,
+            id = it.ch_id,
             name = it.name,
             gender = it.gender,
             imageUri = it.c_image,
@@ -64,7 +64,7 @@ fun List<CharacterEntity>.asViewModel(): List<CharacterModel> {
 fun List<CharacterApi>.asEntitiy() : List<CharacterEntity>{
     return map {
         CharacterEntity(
-            id = it.id.toLong(),
+            ch_id = it.id.toLong(),
             name = it.name,
             status = it.status,
             created = it.created,
